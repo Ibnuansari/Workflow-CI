@@ -47,6 +47,7 @@ jobs:
 
           echo "Jalankan MLflow Project"
           mlflow run . \
+            --env-manager=local \
             -P train=laptop_price_preprocessing/laptop_price_train.csv \
             -P test=laptop_price_preprocessing/laptop_price_test.csv \
             -P target=Price_euros
