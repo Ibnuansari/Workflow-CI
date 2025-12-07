@@ -6,8 +6,9 @@ import numpy as np
 from sklearn.ensemble import RandomForestRegressor
 from sklearn.metrics import mean_squared_error, r2_score
 
-mlflow.set_tracking_uri("file://" + os.path.abspath("mlruns"))
-mlflow.sklearn.autolog()  
+tracking_uri = os.getenv("MLFLOW_TRACKING_URI", "file://" + os.path.abspath("mlruns"))
+mlflow.set_tracking_uri(tracking_uri)
+mlflow.sklearn.autolog()
 
 def load_data(train_path, test_path, target):
     train = pd.read_csv(train_path)
