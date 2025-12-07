@@ -33,10 +33,19 @@ jobs:
           echo "MLFLOW_TRACKING_URI=file://$GITHUB_WORKSPACE/MLProject/mlruns" >> $GITHUB_ENV
 
       - name: Run mlflow project
-        working-directory: MLProject
         env:
           MLFLOW_TRACKING_URI: ${{ env.MLFLOW_TRACKING_URI }}
         run: |
+          echo "ROOT DIRECTORY:"
+          pwd
+          ls -R
+
+          echo "Masuk ke folder MLProject..."
+          cd MLProject
+          pwd
+          ls -R
+
+          echo "Jalankan MLflow Project"
           mlflow run . \
             -P train=laptop_price_preprocessing/laptop_price_train.csv \
             -P test=laptop_price_preprocessing/laptop_price_test.csv \
