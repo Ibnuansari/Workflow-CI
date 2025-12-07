@@ -1,0 +1,17 @@
+name: workflow-ci-mlproject
+
+conda_env: conda.yaml
+
+entry_points:
+  main:
+    parameters:
+      train:
+        type: string
+        default: laptop_price_preprocessing/laptop_price_train.csv
+      test:
+        type: string
+        default: laptop_price_preprocessing/laptop_price_test.csv
+      target:
+        type: string
+        default: Price_euros
+    command: "python modelling.py --train {train} --test {test} --target {target}"
